@@ -12,10 +12,14 @@ with open(finance_csv, 'r') as csvfile:
     for row in csvreader:
         date.append(row[0])
 
+    balance = []
+    for row in csvreader:
+        balance.append(row[1])
 
-def print_analysis(finance_data):
-    date = str(finance_data[0])
-    balance = int(finance_data[1])
+    total_months = sum(date)
+    total_dollars = sum(balance)
+
+
 
     #total_months = len(date)
     #total = sum(balance)
@@ -28,7 +32,7 @@ def print_analysis(finance_data):
     print ("Financial Analysis")
     print ("-----------------------------") 
     print(f"Total Months: (str{total_months})")
-    print(f"Total: {str(total)}")
+    print(f"Total: {str(total_dollars)}")
     #(f"Average Change: {str(average_change)}")
     #print(f"Greatest Increase in Profits: {str("date and (amount)")}")
     #print(f"Greatest Decrease in Profits: {str("date and (amount)")}")
