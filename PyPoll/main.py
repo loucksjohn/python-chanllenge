@@ -5,7 +5,7 @@ election_csv = os.path.join('Resources','election_data.csv')
 
 total_votes = []
 candidates = []
-
+candidate_vote= {}
 
 
 # Read in the CSV file
@@ -14,8 +14,12 @@ with open(election_csv, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     header = next(csvreader)
     for row in csvreader:
-        candidates.append(row[2])
-        uniq_candidate = set(candidates)
+        candidate_name=row[2]
+        if candidate_name not in candidates:
+            candidates.append(candidate_name)
+            candidate_vote[candidate_name]=0
+        candidate_vote[candidate_name] += 1
+        
 
 
         
@@ -25,3 +29,8 @@ with open(election_csv, 'r') as csvfile:
 #
 # vote_percent (votes per candidate / total votes) *100
 
+# Print out the anaylsis
+    print ("Election Results")
+    print ("-----------------------------") 
+    print (candidates)
+#output print data to text file

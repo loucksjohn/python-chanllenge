@@ -1,7 +1,7 @@
 import os
 import csv
 
-finance_csv = os.path.join('..', 'Resources','budget_data.csv')
+finance_csv = os.path.join('Resources','budget_data.csv')
 
 
 # Read in the CSV file
@@ -11,23 +11,37 @@ with open(finance_csv, 'r') as csvfile:
     header = next(csvreader)
     date = [] 
     balance = []
+    average_change = []
+
+    #adding data from rows into date & balance lists
     for row in csvreader:
         date.append(row[0])
-        balance.append(int(row[1]))   
+        balance.append(int(row[1])) 
+
+    #looping through to get sum of change
+    for i in range(len(balance)-1):
+        average_change.append(balance[i+1]-balance[i])
+
+    #converting sum of change into avg change
+    average_change_total = (sum(average_change)/len(average_change))
     
-    
+    #setting up variables for printing
     total_months = len(date)
     total_dollars = sum(balance)
+    max_increase = max(average_change)
+    min_increase = min(average_change)
 
-    #daily_change = (current day - previous day(skipping day 1))
-    #average_change = avg(daily_change?)  
-
-
+    
 # Print out the anaylsis
     print ("Financial Analysis")
     print ("-----------------------------") 
     print(f"Total Months: {str(total_months)}")
     print(f"Total: {str(total_dollars)}")
+    print(average_change_total)
+    print(max_increase)
+    print(min_increase)
     #(f"Average Change: {str(average_change)}")
     #print(f"Greatest Increase in Profits: {str("date and (amount)")}")
     #print(f"Greatest Decrease in Profits: {str("date and (amount)")}")
+
+#output print data to text file
