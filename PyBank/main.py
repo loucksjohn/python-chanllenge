@@ -23,11 +23,11 @@ with open(finance_csv, 'r') as csvfile:
         average_change.append(balance[i+1]-balance[i])
 
     #converting sum of change into avg change
-    average_change_total = (sum(average_change)/len(average_change))
+    average_change_total = '${:,.2f}'.format(sum(average_change)/len(average_change))
     
     #setting up variables for printing
     total_months = len(date)
-    total_dollars = sum(balance)
+    total_dollars = sum(balance)   
     max_increase = max(average_change)
     min_increase = min(average_change)
 
@@ -36,12 +36,9 @@ with open(finance_csv, 'r') as csvfile:
     print ("Financial Analysis")
     print ("-----------------------------") 
     print(f"Total Months: {str(total_months)}")
-    print(f"Total: {str(total_dollars)}")
-    print(average_change_total)
-    print(max_increase)
-    print(min_increase)
-    #(f"Average Change: {str(average_change)}")
-    #print(f"Greatest Increase in Profits: {str("date and (amount)")}")
-    #print(f"Greatest Decrease in Profits: {str("date and (amount)")}")
+    print(f"Total: ${str(total_dollars)}")    
+    print(f"Average Change: {str(average_change_total)}")
+    print(f"Greatest Increase in Profits: $({str(max_increase)})")
+    print(f"Greatest Decrease in Profits: $({str(min_increase)})")
 
 #output print data to text file
