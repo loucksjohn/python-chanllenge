@@ -5,7 +5,7 @@ election_csv = os.path.join('Resources','election_data.csv')
 
 votes = []
 candidates = []
-candidate_votes= {}
+candidate_votes = {}
 
 
 # Read in the CSV file
@@ -22,20 +22,25 @@ with open(election_csv, 'r') as csvfile:
         candidate_votes[candidate_name] += 1
 
     total_votes = len(votes)
+
+    print ("Election Results")
+    print ("-----------------------------") 
+    print (f"Total Votes: {str(total_votes)}")
+    print ("-----------------------------") 
     
-    s = sum(candidate_votes.values())
-    for k, v in candidate_votes.items():
-        pct = round(v * 100.0 / s)
-        print(k,(str(float(pct))+'%'),v)
+    sum_votes = sum(candidate_votes.values())
+    for key, value in candidate_votes.items():
+        pct = round(value * 100.0 / sum_votes)
+        print(key,(str(float(pct))+'%'),value)
+        
+
+    
 
     
         
 # vote_percent (votes per candidate / total votes) *100
 
 # Print out the anaylsis
-    print ("Election Results")
-    print ("-----------------------------") 
-    print (candidates)
-    print (total_votes)
-    print (candidate_votes)
+    
+    #print (results)
   
