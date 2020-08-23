@@ -20,7 +20,7 @@ with open(election_csv, 'r') as csvfile:
             candidates.append(candidate_name)
             candidate_votes[candidate_name]=0
         candidate_votes[candidate_name] += 1
-
+    winner = max(candidate_votes, key=candidate_votes.get)
     total_votes = len(votes)
 
     print ("Election Results")
@@ -31,16 +31,33 @@ with open(election_csv, 'r') as csvfile:
     sum_votes = sum(candidate_votes.values())
     for key, value in candidate_votes.items():
         pct = round(value * 100.0 / sum_votes)
-        print(key,(str(float(pct))+'%'),value)
-        
+        print(key,(str(float(pct))+'%'),value)    
+   
+    print ("-----------------------------")
+    print (f"Winner: {str(winner)}")
 
+import sys
+f = open("analysis.txt", 'w')
+sys.stdout = f
+
+print ("Election Results")
+print ("-----------------------------") 
+print (f"Total Votes: {str(total_votes)}")
+print ("-----------------------------") 
     
+sum_votes = sum(candidate_votes.values())
+for key, value in candidate_votes.items():
+    pct = round(value * 100.0 / sum_votes)
+    print(key,(str(float(pct))+'%'),value)    
+   
+print ("-----------------------------")
+print (f"Winner: {str(winner)}") 
+
+f.close()
 
     
         
 # vote_percent (votes per candidate / total votes) *100
 
-# Print out the anaylsis
-    
-    #print (results)
-  
+# Print out the anaylsis    
+     

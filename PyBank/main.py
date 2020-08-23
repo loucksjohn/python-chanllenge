@@ -42,3 +42,17 @@ with open(finance_csv, 'r') as csvfile:
     print(f"Greatest Decrease in Profits: $({str(min_increase)})")
 
 #output print data to text file
+
+import sys
+f = open("analysis.txt", 'w')
+sys.stdout = f
+print ("Financial Analysis")
+print ("-----------------------------") 
+print(f"Total Months: {str(total_months)}")
+print(f"Total: ${str(total_dollars)}")    
+print(f"Average Change: {str(average_change_total)}")
+print(f"Greatest Increase in Profits: $({str(max_increase)})")
+print(f"Greatest Decrease in Profits: $({str(min_increase)})")
+
+
+f.close()
